@@ -9,5 +9,4 @@ $sqlimage="SELECT * FROM `details` WHERE ID='$imageid';";
 $resultimage=mysqli_query($conn,$sqlimage);
 $rowimage=mysqli_fetch_array($resultimage);
 $image=$rowimage['PROFILEPHOTO'];
-echo $image;
-?>
+echo $image;?>

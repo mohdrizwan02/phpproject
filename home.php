@@ -18,14 +18,14 @@
       }
         /* Set height of carousel to half the window height */
         .half-height-carousel {
-            height: 80vh; /* 50% of viewport height */
+            height: 100vh; /* 50% of viewport height */
             width: 100%; /* 50% of viewport width */
             margin: 0 auto; /* Center the carousel */
         }
         /* Center carousel content vertically */
         .carousel-item > img {
             object-fit: cover;
-            height: 80vh;
+            height: 100vh;
             width: 100%;
         }
     </style>
@@ -104,13 +104,13 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide half-height-carousel " data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://source.unsplash.com/random/900×700/?pets" class="d-block w-100" alt="...">
+          <img src="essentials/car1.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="https://source.unsplash.com/random/900×700/?lions" class="d-block w-100" alt="...">
+          <img src="essentials/car2.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="https://source.unsplash.com/random/900×700/?tigers" class="d-block w-100" alt="...">
+          <img src="essentials/car3.jpg" class="d-block w-100" alt="...">
         </div>
       </div>
     </div>
