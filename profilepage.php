@@ -20,13 +20,15 @@
     if(!isset($_SESSION['login'])) {
       header("location:login.php");
     }
-    if(isset($_SESSION["edited"])) {
+    if(isset($_SESSION['edited'])){
+    if($_SESSION["edited"]) {
         echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> your profile has been successfully submitted
+        <strong>Success!</strong> your profile has been successfully updated
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
     $_SESSION['edited']=false;
     }
+}
     
     $username=$_SESSION['username'];
     $sqle="SELECT * FROM `details` WHERE USERNAME ='$username'";

@@ -147,28 +147,29 @@
   </div>
     <hr>
 
-  <div class="container mt-3">
-       <h2 style="font-family:'Playfair Display', serif;text-align:center;"><b>Animal care,tips and more on our blog</b></h2>
-       <div class="row">
-        <?php
-          $sqlb="SELECT * FROM `blogs`;";
-          $resultb=mysqli_query($conn,$sqlb);
-          while($rowb=mysqli_fetch_array($resultb)) {
-            $blogid=$rowb["BLOGID"];
-          echo '<div class="col-4 mt-4 ">
-                  <div class="card" style="width: 22rem;height=30rem; ">
-                    <img src="essentials/image.php?blogid='.$blogid.'" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">'.$rowb['BLOGTITLE'] .'</h5>
-                      <p class="card-text">'./*$rowb['BLOGDESC']*/ '</p>
-                      <a href="blog.php?blogid='.$blogid.'" class="btn btn-primary ">READ THE BLOG POST</a>
-                    </div>
+    <div class="container mt-3">
+  <h2 style="font-family:'Playfair Display', serif;text-align:center;"><b>Animal care, tips, and more on our blog</b></h2>
+  <div class="row">
+    <?php
+      $sqlb="SELECT * FROM `blogs`;";
+      $resultb=mysqli_query($conn,$sqlb);
+      while($rowb=mysqli_fetch_array($resultb)) {
+        $blogid=$rowb["BLOGID"];
+        echo '<div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                <div class="card h-100">
+                  <img src="essentials/blogimage.php?blogid='.$blogid.'" class="card-img-top" alt="...">
+                  <div class="card-body" style="height: 200px;">
+                    <h5 class="card-title">'.$rowb['BLOGTITLE'].'</h5>
+                    <p class="card-text">'/*.$rowb['BLOGDESC'].*/.'</p>
+                    <a href="blog.php?blogid='.$blogid.'" class="btn btn-primary">READ THE BLOG POST</a>
                   </div>
-            </div>';
-          }
-        ?> 
-        </div>
+                </div>
+              </div>';
+      }
+    ?> 
   </div>
+</div>
+
   <div class="container-fluid bg-dark text-white mt-5" id="about">
       <div class="row m-0 " style="padding-right:80px">
         <div class="col-6">
