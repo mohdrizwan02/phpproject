@@ -49,7 +49,7 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-md-3">
-                            <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle" alt="Profile Picture">
+                            <img src="essentials/profileimage.php?id='.$row['ID'].'" class="img-fluid rounded-circle" alt="Profile Picture" style="height:150px;width:150px;radius:50%;margin-left:30px;">
                         </div>
                         <div class="col-md-9">
                             
