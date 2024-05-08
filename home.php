@@ -148,7 +148,18 @@
     <hr>
 
     <div class="container mt-3">
-  <h2 style="font-family:'Playfair Display', serif;text-align:center;"><b>Animal care, tips, and more on our blog</b></h2>
+    <div class="row">
+    <div class="col-7 d-flex align-items-center justify-content-end">
+        <h2 style="font-family:'Playfair Display', serif;"><b>Animal care, tips, and more on our blog</b></h2>
+    </div>
+    <div class="col-5 d-flex align-items-center justify-content-end">
+        <h4 style="font-family:'Playfair Display', serif;margin-right:5px;">Contribute to our community</h4>
+        <button type="button" class="btn btn-dark  ml-2" style="font-family:'Playfair Display', serif; background-color: #000; color: #fff;" onmouseover="this.style.backgroundColor='#fff'; this.style.color='#000'; this.style.textDecoration='underline';" onmouseout="this.style.backgroundColor='#000'; this.style.color='#fff'; this.style.textDecoration='none';" onclick="openaddblogpage()">
+    <a href="addblog.php" style="color: inherit; text-decoration: none;">Add a Blog</a>
+</button>
+
+    </div>
+</div>
   <div class="row">
     <?php
       $sqlb="SELECT * FROM `blogs`;";
@@ -207,7 +218,12 @@
 
   
  
-  
+  <script>
+    function openaddblogpage() {
+        window.location.href = 'addblog.php';
+    }
+</script>
+
 
     <!-- Optional JavaScript; choose one of the two! -- style="background-color: rgba(0, 0, 0, 0.05); color: white;"-->
 
