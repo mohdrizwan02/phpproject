@@ -13,12 +13,12 @@
   <body>
   <?php
     session_start();
-     require 'essentials/_navbar.php';
-     
+    require 'essentials/_navbar.php';
+    
     include 'essentials/_dbconnect.php';
     
     if(!isset($_SESSION['login'])) {
-      header("location:login.php");
+        header("location:login.php");
     }
     $blogid=$_GET['blogid'];
     $sqlb="SELECT * FROM `blogs` WHERE BLOGID='$blogid';";
@@ -26,28 +26,32 @@
     $rowb=mysqli_fetch_array($resultb);
     $blogtitle=$rowb['BLOGTITLE'];
     $blogdesc=$rowb['BLOGDESC'];
-    ?>
-   <div class="container mt-5 mb-5 bg-dark">
-    <div class="row pt-4 px-3">
-      <?php echo '<img src="essentials/image.php?blogid='.$blogid.'" height=650px width=800px> style="padding:20px;margin:20px;"'; ?>
-    </div>
-    
-  <div class="row">
-    <div class="col-lg-12">
-      <!-- Blog Posts -->
-      <div class="card m-3 bg-dark border-white">
-        <div class="card-body text-white">
-          <h2 class="card-title"><?php echo $blogtitle;?></h2>
-          <p class="card-text"><?php echo $blogdesc;?></p>
-          <p class="card-text"><small class="text-muted">Posted by John Doe on January 1, 2024</small></p>
+?>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <!-- Blog Title -->
+        <div class="col-lg-12">
+            <h2 class="mb-4"><?php echo $blogtitle;?></h2>
         </div>
-      </div>
-      
+        <div class="col-lg-8">
+            <!-- Blog Description -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text"><?php echo $blogdesc;?></p>
+                    <p class="card-text"><small class="text-muted">Posted by John Doe on January 1, 2024</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- Blog Image -->
+            <div class="card mb-3">
+                <img src="essentials/blogimage.php?blogid=<?php echo $blogid;?>" class="card-img-top" alt="Blog Image">
+            </div>
+        </div>
     </div>
-    <!-- Sidebar -->
-  
-  </div>
 </div>
+
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
