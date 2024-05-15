@@ -168,11 +168,12 @@
         $blogid=$rowb["BLOGID"];
         echo '<div class="col-lg-4 col-md-6 col-sm-12 mt-4">
                 <div class="card h-100">
-                  <img src="essentials/blogimage.php?blogid='.$blogid.'" class="card-img-top" alt="...">
+                  <img src="essentials/blogimage.php?blogid='.$blogid.'" class="card-img-top" alt="..." style="max-height:240px;">
                   <div class="card-body" style="height: 200px;">
                     <h5 class="card-title">'.$rowb['BLOGTITLE'].'</h5>
                     <p class="card-text">'/*.$rowb['BLOGDESC'].*/.'</p>
                     <a href="blog.php?blogid='.$blogid.'" class="btn btn-primary">READ THE BLOG POST</a>
+                    <p class="card-text" style="margin-top:15px;"><small class="text-muted">'.$rowb['BLOGUSERNAME'].' '.$rowb['BLOGTIMESTAMP'].'</small></p>
                   </div>
                 </div>
               </div>';
