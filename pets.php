@@ -13,13 +13,14 @@
   <body>
   <?php
     session_start();
+    if(!isset($_SESSION['login'])) {
+      header("location:login.php");
+    }
      require 'essentials/_navbar.php';
      
     include 'essentials/_dbconnect.php';
     
-    if(!isset($_SESSION['login'])) {
-      header("location:login.php");
-    }
+    
     ?>
     <?php 
     if(isset($_GET['pettype'])) {
@@ -175,13 +176,7 @@
   echo '</div>
   </div>
     
-<footer class="bg-body-tertiary text-center text-lg-start bg-dark mt-0 text-white"  >
-  <!-- Copyright -->
-  <div class="text-center p-3" >
-    © 2024 Copyright: HAPPY PETS
-  </div>
-  <!-- Copyright -->
-</footer>
+
 <!-- modal for pincode -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -206,6 +201,13 @@
 
 
 ?>
+ <footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+  <!-- Copyright -->
+  <div class="text-center p-1">
+    © 2024 Copyright: HAPPY PETS
+  </div>
+  <!-- Copyright -->
+</footer>
 
 <script>
 function openModal() {

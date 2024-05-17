@@ -2,11 +2,12 @@
  session_start();
 
  
- include '_dbconnect.php';
+ 
  
  if(!isset($_SESSION['login'])) {
      header("location:login.php");
  }
+ include '_dbconnect.php';
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Check if file was uploaded without errors

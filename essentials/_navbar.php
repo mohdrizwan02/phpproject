@@ -8,7 +8,7 @@ if(isset($_SESSION["login"])){
 
   echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="essentials/happypets.png"  alt="Happy Pet Store Logo" style="max-width: 120px; height: auto;"></a>
+    <a class="navbar-brand" href="/phpproject/home.php"><img src="essentials/happypets.png"  alt="Happy Pet Store Logo" style="max-width: 120px; height: auto;"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,7 +47,7 @@ if(isset($_SESSION["login"])){
       if($loggedin){
        echo '<div class="d-flex align-items-center">
        
-       <a href="/phpproject/notifications.php" class="btn btn-transparent mx-1 glow-on-hover"><i class="bi text-white bi-bell"></i></a>
+       <a href="notifications.php" class="btn btn-transparent mx-1 glow-on-hover"><i class="bi text-white bi-bell"></i></a>
        <a href="profilepage.php" class="btn btn-transparent mx-1 glow-on-hover"><i class="bi bi-person-circle text-white"></i></i></a>
      </div>  ';
       }

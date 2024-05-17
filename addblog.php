@@ -21,6 +21,9 @@
   <body>
   <?php
 session_start();
+if(!isset($_SESSION['login'])) {
+    header("location:login.php");
+  }
 require 'essentials/_navbar.php';
 include 'essentials/_dbconnect.php';
 ?>
@@ -44,6 +47,7 @@ include 'essentials/_dbconnect.php';
                     <div class="form-group">
                         <label for="blogImage" style="font-family:'Playfair Display'">Blog Image:</label>
                         <input type="file" class="form-control-file mt-3" id="blogImage" name="blogImage" accept="image/*" required>
+                        <h5 class="mt-2">MaxSize Allowed 500kb</h5>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
@@ -68,6 +72,12 @@ include 'essentials/_dbconnect.php';
     });
 </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-     
+    <footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+  <!-- Copyright -->
+  <div class="text-center p-1">
+    © 2024 Copyright: HAPPY PETS
+  </div>
+  <!-- Copyright -->
+</footer>   
 </body>
 </html>

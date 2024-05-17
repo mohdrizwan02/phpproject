@@ -103,14 +103,15 @@
   </head>
   <body>
   <?php
-    session_start(); 
+    session_start();
+    if(!isset($_SESSION['login'])) {
+        header("location:login.php");
+      } 
     include 'essentials/_dbconnect.php';
     require 'essentials/_navbar.php';
     
     
-    if(!isset($_SESSION['login'])) {
-      header("location:login.php");
-    }
+   
     if(isset($_SESSION['edited'])){
     if($_SESSION["edited"]) {
         echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -194,12 +195,12 @@
         window.location.href = "editprofile.php"; // Replace "edit-profile.html" with the actual URL of your edit profile page
     }
 </script>
-<footer class="footer bg-dark">
-        <!-- Copyright -->
-        <div class="text-center text-light p-3">
-            © 2024 Copyright: HAPPY PETS
-        </div>
-        <!-- Copyright -->
-    </footer>
+<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+  <!-- Copyright -->
+  <div class="text-center p-1">
+    © 2024 Copyright: HAPPY PETS
+  </div>
+  <!-- Copyright -->
+</footer>
   </body>
 </html>

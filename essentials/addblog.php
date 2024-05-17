@@ -25,18 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare("INSERT INTO `blogs` (`BLOGTITLE`, `BLOGIMAGE`, `BLOGDESC`, `BLOGUSERNAME`, `BLOGTIMESTAMP`) VALUES (?,?,?,?,?);");
             $stmt->bind_param("sssss",$blogTitle, $file_content,$blogDescription, $user,$timestamp);
             $stmt->execute();
-            echo 'timpstamp';
+            
 
             // Check if the update was successful
             if ($stmt->affected_rows > 0) {
-                
-            } else {
-                echo "Error updating profile picture.";
-            }
-            $stmt->close();
-        } else {
-            echo "Error reading file.";
-        }
+                $_SESSION['blogadded']=true;
+                header("location:/phpproject/home.php");
+            } 
+            
+            
+        } 
     }
 }
  ?>   

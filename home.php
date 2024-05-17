@@ -13,7 +13,8 @@
     <title>Hello, world!</title>
     <style>
       body {
-           
+          margin:0;
+          padding:0; 
             
       }
         /* Set height of carousel to half the window height */
@@ -72,24 +73,63 @@
 
   }
 </style> 
-
-
-
-   
-   
-  </head>
+<style>
+        .about-section {
+            margin-top: 5rem;
+        }
+        .about-img {
+            width: 100%;
+            max-width: 500px; /* Ensure the image does not exceed this width */
+            height: auto;
+            margin-top: 80px;
+            margin-bottom: 50px;
+        }
+        .about-card {
+            margin-top: 80px;
+        }
+        .about-card-body {
+            background-color: #343a40; /* Dark background for the card body */
+            border-color: #343a40;
+        }
+        .about-card-text {
+            color: white;
+        }
+        .about-logo {
+            max-width: 350px;
+            height: auto;
+        }
+        @media (max-width: 767.98px) {
+            .about-card {
+                margin-top: 20px;
+            }
+            .about-img {
+                margin-top: 20px;
+                max-width: 100%; /* Ensure the image scales down on small screens */
+            }
+        }
+    </style>
+ </head>
   <body><header>
     <?php
     session_start();
-     require 'essentials/_navbar.php';
      
-    include 'essentials/_dbconnect.php';
     
     if(!isset($_SESSION['login'])) {
       header("location:login.php");
     }
+    require 'essentials/_navbar.php';
+    include 'essentials/_dbconnect.php';
+    if(isset($_SESSION['blogadded'])){
+      if($_SESSION['blogadded']==true){
+        echo '<div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+            <strong>success!</strong>Your blog has been successfully added.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+        unset($_SESSION['blogadded']);
+      }
+    }
     if(isset($_SESSION['peterror'])) {
-      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+      echo '<div class="alert alert-warning alert-dismissible fade show custom-alert" role="alert">
         <strong>Sorry!</strong> search for a valid pet
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
@@ -114,7 +154,7 @@
         </div>
       </div>
     </div>
-<main>
+<main style="margin-bottom:80px;">
   <div class="container mt-3">
   <h2 style="font-family:'Playfair Display', serif;text-align:center;text-decoration:underline"><b>ADOPT A PET NOW</b></h2>
     <div class="container py-3">
@@ -182,34 +222,33 @@
   </div>
 </div>
 
-  <div class="container-fluid bg-dark text-white mt-5" id="about">
-      <div class="row m-0 " style="padding-right:80px">
-        <div class="col-6">
-          
-            <img src="essentials/aboutdog.png" alt="about website logo" height=500px width=500px style="margin-top:80px;margin-left:50px;margin-bottom:50px">
-        </div>
-        <div class="col-6" style="margin-top:80px ">
-            <div class="card  bg-dark border-dark" >
-              <div class="card-body text-white">
-                 <h2 class="card-title"> <div class="container mt-0 ">
-                   <img src="essentials/happypets.png"  alt="Happy Pet Store Logo" style="max-width: 350px; height: auto;">
+<div class="container-fluid bg-dark text-white about-section" id="about">
+        <div class="row m-0">
+            <div class="col-12 col-md-6  d-flex justify-content-center">
+                <img src="essentials/aboutdog.png" alt="about website logo" class="about-img">
+            </div>
+            <div class="col-12 col-md-6 about-card">
+                <div class="card about-card-body">
+                    <div class="card-body">
+                        <div class="container mt-0">
+                            <img src="essentials/happypets.png" alt="Happy Pet Store Logo" class="about-logo">
+                        </div>
+                        <h5 class="card-text about-card-text mt-3">Welcome to Happy Pets, where wagging tails and purring companions await you! At Happy Pets, we're dedicated to matching loving homes with furry friends in need. Whether you're looking for a playful pup, a cuddly kitten, or a gentle giant, we have a diverse range of pets eagerly awaiting adoption. Our mission is to make both pets and owners equally happy, ensuring each adoption is a perfect match. With our user-friendly website and dedicated team, finding your new best friend has never been easier. Join us at Happy Pets and let's make tails wag and hearts purr together!</h5>
+                        <a href="about.php" class="btn btn-light mt-3">Know More</a>
+                    </div>
                 </div>
-                <h5 class="card-text mt-3">Welcome to Happy Pets, where wagging tails and purring companions await you! At Happy Pets, we're dedicated to matching loving homes with furry friends in need. Whether you're looking for a playful pup, a cuddly kitten, or a gentle giant, we have a diverse range of pets eagerly awaiting adoption. Our mission is to make both pets and owners equally happy, ensuring each adoption is a perfect match. With our user-friendly website and dedicated team, finding your new best friend has never been easier. Join us at Happy Pets and let's make tails wag and hearts purr together!</h5>
-                <a href="about.php" class="btn btn-light mt-3">Know More</a>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </main>
 
 
 
 
 
-<footer class="bg-body-tertiary text-center text-lg-start bg-dark mt-0 text-white"  >
+<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
   <!-- Copyright -->
-  <div class="text-center p-3" >
+  <div class="text-center p-1">
     © 2024 Copyright: HAPPY PETS
   </div>
   <!-- Copyright -->
