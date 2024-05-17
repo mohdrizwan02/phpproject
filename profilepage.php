@@ -10,6 +10,34 @@
 
     <title>Hello, world!</title>
     <style>
+        /* Custom Styles */
+        .center-container {
+            position: absolute;
+
+           
+            width: 100%;
+            max-width: 1000px;
+        }
+        .custom-container {
+            background-color: white;
+            margin-top: 30px;   
+            width: 100%;
+            
+            padding-top: 20px;
+            border: 2px solid black;
+            border-radius: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left:auto;
+            margin-right: auto;
+            margin-bottom:20px;;
+        }
+        @media (min-width: 576px) {
+            .custom-container {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
         *{
             padding:0px;
             margin:0px;
@@ -24,6 +52,46 @@
             text:black;
             border-radius:20px;
         }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: rgba(128, 128, 128, 0.2);
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .profile-title {
+            margin-left: 30px;
+        }
+        .edit-profile-btn {
+            margin-left: auto;
+            border-radius: 10px;
+        }
+        @media (min-width: 576px) {
+            .profile-header {
+                margin-bottom: 20px;
+            }
+            .profile-title {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .edit-profile-btn {
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+        .custom-hr {
+        margin-top: 20px;
+    }
+    .profile-info, .additional-info {
+        margin-left: 45px;
+        background-color: rgba(128, 128, 128, 0.2);
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .additional-info {
+        margin-bottom: 15px;
+    }
     </style>
     <style>
   /* Change background color on hover */
@@ -33,7 +101,7 @@
   }
 </style>
   </head>
-  <body><header>
+  <body>
   <?php
     session_start(); 
     include 'essentials/_dbconnect.php';
@@ -61,57 +129,58 @@
     
 
    ?>
-   <div class="container" style="background-color:white;margin-top:30px;margin-left:250px;margin-bottom:30px;width:1000px;padding-top:20px;border:black solid 2px;border-radius:20px;">
-   <div style="display: flex; align-items: center;margin-bottom:30px; background-color:rgba(128, 128, 128, 0.2);padding:10px;border-radius:15px;   ">
-    <h2 style=" margin-left: 30px;"><b>My Profile</b></h2>
-    <button class="btn btn-dark"onclick="redirectToEditProfile()" style="margin-left:600px;border-radius:10px;">Edit Profile</button>
-</div>
+   
+   <div class="container custom-container" >
+        <div class="profile-header">
+            <h2 class="profile-title"><b>My Profile</b></h2>
+            <button class="btn btn-dark edit-profile-btn" onclick="redirectToEditProfile()" style="border-radius: 10px;">Edit Profile</button>
+        </div>
 
 
 
-       <?php 
-          echo '<div class="row mb-3">
+        <?php 
+    echo '<div class="row mb-3">
             <div class="col-md-4">
-                <img src="essentials/profileimage.php?id='.$row['ID'].'" class="img-fluid rounded-circle" alt="Profile Picture" style="height:250px;width:250px;radius:50%;margin-left:30px;">
-            </div >
-                <div class="col-md-8">
-                      <div id="profile" >      
+                <img src="essentials/profileimage.php?id='.$row['ID'].'" class="img-fluid rounded-circle" alt="Profile Picture" style="height:250px;width:250px;">
+            </div>
+            <div class="col-md-8">
+                <div id="profile">      
                     <h4 class="mt-4">'.$row['FIRSTNAME'].' '.$row['LASTNAME'].'</h4>
-                        <h4 class=" mt-1">'.$row['EMAIL'].'</h4>
+                    <h4 class="mt-1">'.$row['EMAIL'].'</h4>
                     <h4 class="mt-0">'.$row['USERNAME'].'</h4>
-                    <div style="display: inline-block;margin-top:25px;">
-                    <button class="btn btn-dark" onclick="" style="margin-left:20px;">VIEW PROFILE PICTURE</button>
-                    </div>
-                    <div style="display: inline-block;">
+                    <div class="mt-3">
+                        <button class="btn btn-dark" onclick="">VIEW PROFILE PICTURE</button>
                         <button class="btn btn-dark" onclick="" style="margin-left:40px;">VIEW MY BLOGS</button>
                     </div>
-                    </div>
-
+                </div>
+            </div>
         </div>
-        <hr style="margin-top:20px;">
-        <div style="margin-left:45px;background-color:rgba(128, 128, 128, 0.2);width:900px;padding:20px;border-radius:20px;">
-        <h3><b>About Me</b></h3>
-                    <p>  </p>
-                    <h5>Contact Information</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-phone"></i>PHONE : '.$row['PHONE'].'</li>
-                        <li><i class="fas fa-envelope"></i>EMAIL : '.$row['EMAIL'].'</li>
-                        <li><i class="fas fa-map-marker-alt"></i> '.$row['ADDRESS'].' '.$row['CITY'].' '.$row['STATE'].'</li>
-                    </ul></div><hr style="margin-top:20px;">
-                    <div style="margin-left:45px;margin-bottom:15px;background-color:rgba(128, 128, 128, 0.2);width:900px;padding:20px;border-radius:20px;">
-                    <h5>Additional Information</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-birthday-cake"></i> Date of Birth: '.$row['DOB'].'</li>
-                        <li><i class="fas fa-venus-mars"></i> Gender: '.$row['GENDER'].'</li>
-                        <li><i class="fas fa-home"></i> '.$row['PINCODE'].' '.$row['ADDRESS'].' '.$row['CITY'].' '.$row['STATE'].'</li>
-                        
-                    </ul>
-                    </div>
-   </div>';
+        <hr class="custom-hr">
+        <div class="profile-info">
+            <h3><b>About Me</b></h3>
+            <p>  </p> <!-- Consider removing if not needed -->
+            <h5>Contact Information</h5>
+            <ul class="list-unstyled">
+                <li><i class="fas fa-phone"></i> PHONE : '.$row['PHONE'].'</li>
+                <li><i class="fas fa-envelope"></i> EMAIL : '.$row['EMAIL'].'</li>
+                <li><i class="fas fa-map-marker-alt"></i> '.$row['ADDRESS'].' '.$row['CITY'].' '.$row['STATE'].'</li>
+            </ul>
+        </div>
+        <hr class="custom-hr">
+        <div class="additional-info">
+            <h5>Additional Information</h5>
+            <ul class="list-unstyled">
+                <li><i class="fas fa-birthday-cake"></i> Date of Birth: '.$row['DOB'].'</li>
+                <li><i class="fas fa-venus-mars"></i> Gender: '.$row['GENDER'].'</li>
+                <li><i class="fas fa-home"></i> '.$row['PINCODE'].' '.$row['ADDRESS'].' '.$row['CITY'].' '.$row['STATE'].'</li>
+            </ul>
+        </div>';
+?>
 
-   ?>
    
- </div>   
+ </div>
+  
+   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -125,12 +194,12 @@
         window.location.href = "editprofile.php"; // Replace "edit-profile.html" with the actual URL of your edit profile page
     }
 </script>
-<footer class="bg-body-tertiary text-center text-lg-start bg-dark ">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05); color: white;">
-    © 2024 Copyright: HAPPY PETS
-  </div>
-  <!-- Copyright -->
-</footer>
+<footer class="footer bg-dark">
+        <!-- Copyright -->
+        <div class="text-center text-light p-3">
+            © 2024 Copyright: HAPPY PETS
+        </div>
+        <!-- Copyright -->
+    </footer>
   </body>
 </html>

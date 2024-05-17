@@ -23,68 +23,6 @@
 session_start();
 require 'essentials/_navbar.php';
 include 'essentials/_dbconnect.php';
-$blogusername=$_SESSION['username'];
-
-if(!isset($_SESSION['login'])) {
-    header("location:login.php");
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $blogTitle = $_POST['blogTitle'];
-    $blogDescription = $_POST['blogDescription'];
-    $timestamp = date("Y-m-d H:i:s");
-    $imagename=$_FILES['blogImage']['name'];
-    $tempname=$_FILES['blogImage']['tmp_name'];
-    $imagedata=file_get_contents($tempname);
-    $folder='essentials/'.$imagename;
-    $queryi="INSERT INTO `blogs` (`BLOGTITLE`, `BLOGIMAGE`, `BLOGDESC`, `BLOGUSERNAME`, `BLOGTIMESTAMP`) VALUES (?,?,?,?,?);";
-    $resulti=$conn->prepare($queryi);
-    $resulti->bind_param("sbsss",$blogTitle,$imagedata,$blogDescription,$blogusername,$timestamp);
-    $resulti->execute();
-    
-
-//     $targetDir = "essentials/";
-//     $targetFile = $targetDir . basename($_FILES["blogImage"]["name"]);
-//     $uploadOk = 1;
-//     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-//     // Check if file is a PNG image
-//     if($imageFileType != "png") {
-//         echo "Sorry, only PNG files are allowed.";
-//         $uploadOk = 0;
-//     }
-
-//     // Check file size
-//     if ($_FILES["blogImage"]["size"] > 400000) { // 400 KB in bytes
-//         echo "Sorry, your file is too large (maximum size is 400KB).";
-//         $uploadOk = 0;
-//     }
-
-//     // Check if $uploadOk is set to 0 by an error
-//     if ($uploadOk == 0) {
-//         echo "Sorry, your file was not uploaded.";
-//     } else {
-//         if (move_uploaded_file($_FILES["blogImage"]["tmp_name"], $targetFile)) {
-//             echo "The file " . htmlspecialchars(basename($_FILES["blogImage"]["name"])) . " has been uploaded.";
-
-//             // Insert data into the database
-//             $sql = "INSERT INTO `blogs` (BLOGTITLE,BLOGIMAGE,BLOGDESC) VALUES ('$blogTitle', '$targetFile', '$blogDescription')";
-
-//             if (mysqli_query($conn, $sql)) {
-//                 echo "Records inserted successfully.";
-
-//                 // Delete the uploaded file
-//                 unlink($targetFile); // Deletes the file from the server
-
-//             } else {
-//                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
-//             }
-//         } else {
-//             echo "Sorry, there was an error uploading your file.";
-//         }
-//     }
-// }
-}
 ?>
 
 
@@ -92,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2 style="font-family:'Playfair Display', serif;text-align:center;">ADD A BLOG</h2>
         <div class="row" style="margin-top:25px;">
             <div class="col-8">
-                <form action="addblog.php" method="post" enctype="multipart/form-data">
+                <form action="essentials/addblog.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="blogTitle" style="font-family:'Playfair Display'"><b>Blog Title:</b></label>
                         <textarea class="form-control mt-2 mb-2" id="blogTitle" name="blogTitle" rows="2" required></textarea>

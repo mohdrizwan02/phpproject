@@ -18,6 +18,13 @@
       header("location:login.php");
     }
     $_SESSION['edited']=false;
+    if(isset($_SESSION['imageupdated'])==true){
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong></strong> profile picture has been successfully updated.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+      unset($_SESSION['imageupdated']);
+    }
     ?>
     </header>
     <?php
@@ -110,14 +117,14 @@
                 <div class="card-body">
                     <div class="row">
                     <div class="col-12 text-center">
-                        <img src="https://via.placeholder.com/300" class="img-fluid rounded" style="width: 200px; height: 200px;" alt="Profile Picture">
+                        <img src="essentials/profileimage.php?id=<?php echo $row['ID']?>" class="img-fluid rounded" style="width: 200px; height: 200px;" alt="Profile Picture">
                     </div>
 
                     </div>
                     <div class="row">
                         <div class="col-12 text-center mt-3">
-                            <button class="btn btn-primary" onclick="viewProfilePhoto()">View Profile Photo</button>
-                            <button class="btn btn-primary" onclick="editProfilePhoto()">Edit Profile Photo</button>
+                            <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#profileimagemodal">View Profile Photo</button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileImageModal">Edit Profile Photo</button>
                         </div>
                     </div>
                     <div class="row mt-5">
@@ -249,6 +256,52 @@
 </div>
 
 </main>
+<!-- Extra large modal -->
+
+
+<!-- Large modal -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="profileimagemodal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PROFILE IMAGE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <img src="essentials/profileimage.php?id=<?php echo $row['ID']?>" width="700px" height="700px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editProfileImageModal" tabindex="-1" aria-labelledby="editProfileImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileImageModalLabel">Edit Profile Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" enctype="multipart/form-data" action="essentials/editprofileimage.php">
+          <div class="mb-3">
+            <label for="profileImage" class="form-label">Choose Image:</label>
+            <input type="file" class="form-control" id="profileImage" name="profile_picture" accept="image/*" required>
+            <h5 style="margin-top:10px;">maxsize 500KB</h5>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -314,5 +367,6 @@ function isValidDOB($dob) {
         window.location.href = "profilepage.php";
     }
 </script>
+
 </body>
 </html>
