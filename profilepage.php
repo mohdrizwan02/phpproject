@@ -99,9 +99,11 @@
     background-color:rgb(13, 110, 253);
     color:white;
   }
+ 
 </style>
   </head>
   <body>
+    
   <?php
     session_start();
     if(!isset($_SESSION['login'])) {
@@ -150,8 +152,8 @@
                     <h4 class="mt-1">'.$row['EMAIL'].'</h4>
                     <h4 class="mt-0">'.$row['USERNAME'].'</h4>
                     <div class="mt-3">
-                        <button class="btn btn-dark" onclick="">VIEW PROFILE PICTURE</button>
-                        <button class="btn btn-dark" onclick="" style="margin-left:40px;">VIEW MY BLOGS</button>
+                        <button class="btn btn-dark"  data-bs-toggle="modal" data-bs-target="#profileimagemodal">VIEW PROFILE PICTURE</button>
+                        <button class="btn btn-dark" onclick="viewblogs()" style="margin-left:40px;">VIEW MY BLOGS</button>
                     </div>
                 </div>
             </div>
@@ -180,6 +182,50 @@
 
    
  </div>
+ <div class="modal fade" id="profileimagemodal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PROFILE IMAGE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <img src="essentials/profileimage.php?id=<?php echo $row['ID']?>" width="700px" height="700px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blogModalLabel">My Blogs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Blog content goes here -->
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                    <p>Blog content...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
   
    
 
@@ -195,7 +241,13 @@
         window.location.href = "editprofile.php"; // Replace "edit-profile.html" with the actual URL of your edit profile page
     }
 </script>
-<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+<script>
+        function viewblogs() {
+            var myModal = new bootstrap.Modal(document.getElementById('blogModal'));
+            myModal.show();
+        }
+    </script>
+<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white " style="width: 100%; padding: 20px 0;height:70px;margin-top:10px;">
   <!-- Copyright -->
   <div class="text-center p-1">
     © 2024 Copyright: HAPPY PETS
@@ -203,4 +255,5 @@
   <!-- Copyright -->
 </footer>
   </body>
+  
 </html>

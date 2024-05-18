@@ -24,9 +24,28 @@
     ?>
     <?php 
     if(isset($_GET['pettype'])) {
-      $pet=$_GET['pettype'];
-      $_SESSION['pet']=$_GET['pettype'];
       
+
+      $keywords = [
+        "cats" => ["cat", "kitten", "feline", "pussycat", "tomcat", "moggy", "meow"],
+        "dogs" => ["dog", "puppy", "canine", "pooch", "hound", "mutt", "doggy", "doggie"],
+        "birds" => ["bird", "parrot", "sparrow", "avian", "canary", "finch", "eagle", "hawk", "falcon", "owl", "pigeon", "dove"]
+      ];
+      function getPetCategory($query, $keywords) {
+        $query = strtolower($query); // Convert query to lowercase for case-insensitive comparison
+        foreach ($keywords as $category => $terms) {
+            foreach ($terms as $term) {
+                if (strpos($query, $term) !== false) {
+                    return $category; // Return the category key if a match is found
+                }
+                
+            }
+        }
+        return NULL;// Return null if no match is found
+    }
+    $pet=$_GET['pettype'];
+    $_SESSION['pet']=getPetCategory($pet,$keywords);
+    $pet=$_SESSION['pet']; 
     } 
     else{
     $_SESSION['pet']=$_GET['pet'];
@@ -201,7 +220,7 @@
 
 
 ?>
- <footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+ <footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white " style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;margin-bottom:0px;  ">
   <!-- Copyright -->
   <div class="text-center p-1">
     © 2024 Copyright: HAPPY PETS
