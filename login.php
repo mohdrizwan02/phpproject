@@ -9,6 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
+      .setheight{
+        min-height:604px;
+      }
         body {
 
             background-image: url('essentials/pet.jpg'); /* Path to your background image */
@@ -44,6 +47,7 @@
     <title>login</title>
   </head>
   <body>
+    <div class="setheight">
          <?php require 'essentials/_navbar.php';
          include 'essentials/_dbconnect.php';?>
          <?php 
@@ -112,6 +116,7 @@
         </div>
     </div>
 </div>
+</div>
       
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -138,7 +143,7 @@ showPasswordButton.addEventListener('click', function() {
     }
 });
 </script>
-<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;">
   <!-- Copyright -->
   <div class="text-center p-1">
     © 2024 Copyright: HAPPY PETS

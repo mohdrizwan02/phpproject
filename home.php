@@ -1,3 +1,8 @@
+<?php session_start();
+    if(!isset($_SESSION['login'])) {
+      header("location:login.php");
+    }
+    ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -72,8 +77,36 @@
     color:white;
 
   }
+  .masthead {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color:white;
+  background-image: url("essentials/rehome.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+.masthead .masthead-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  font-family: "Roboto Slab",  "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.masthead .masthead-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+} 
 </style> 
 <style>
+  .setheight{
+        min-height:604px;
+      }
         .about-section {
             margin-top: 5rem;
         }
@@ -109,14 +142,16 @@
         }
     </style>
  </head>
-  <body><header>
+  <body>
+  <div class="setheight">  
+  <header>
     <?php
-    session_start();
+    // session_start();
      
     
-    if(!isset($_SESSION['login'])) {
-      header("location:login.php");
-    }
+    // if(!isset($_SESSION['login'])) {
+    //   header("location:login.php");
+    // }
     require 'essentials/_navbar.php';
     include 'essentials/_dbconnect.php';
     if(isset($_SESSION['blogadded'])){
@@ -154,7 +189,7 @@
         </div>
       </div>
     </div>
-<main style="margin-bottom:80px;">
+<main style="">
   <div class="container mt-3">
   <h2 style="font-family:'Playfair Display', serif;text-align:center;text-decoration:underline"><b>ADOPT A PET NOW</b></h2>
     <div class="container py-3">
@@ -184,6 +219,14 @@
         </div>
       </div>
     </div>
+  </div>
+    <hr>
+    <div class="masthead">
+            <div class="container">
+                <div class="masthead-heading"><b>Re-Home a Pet</b></div>
+                <div class="masthead-subheading text-uppercase"></b>Every Pet Deserves a Good Home. #Adoptlove</b></div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="rehome-a-pet.php">Re-Home a Pet</a>
+            </div>
   </div>
     <hr>
 
@@ -241,12 +284,12 @@
         </div>
     </div>
 </main>
+</div>  
 
 
 
 
-
-<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white fixed-bottom" style="width: 100%; padding: 20px 0;height:70px;margin-top:70px;">
+<footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white" style="width: 100%; padding: 20px 0;height:70px;">
   <!-- Copyright -->
   <div class="text-center p-1">
     © 2024 Copyright: HAPPY PETS

@@ -199,32 +199,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="blogModalLabel">My Blogs</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Blog content goes here -->
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                    <p>Blog content...</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
     </main>
   
    
@@ -243,8 +218,7 @@
 </script>
 <script>
         function viewblogs() {
-            var myModal = new bootstrap.Modal(document.getElementById('blogModal'));
-            myModal.show();
+            window.location.href="myblogs.php";
         }
     </script>
 <footer class="bg-body-tertiary text-center text-lg-start bg-dark text-white " style="width: 100%; padding: 20px 0;height:70px;margin-top:10px;">

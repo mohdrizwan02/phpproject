@@ -50,10 +50,13 @@
     else{
     $_SESSION['pet']=$_GET['pet'];
     $pet=$_SESSION['pet'];
-    } 
+    }
+    
      if(!(strpos($pet,"dogs")!==false||strpos($pet,"cats")!==false||strpos($pet,"birds")!==false)){
-       $_SESSION['peterror']=$pet;
+      if($pet==NULL){
+       $_SESSION['peterror']="invalid_pet";
        header("location:home.php");
+      }
      }
     if($_SERVER['REQUEST_METHOD']=='POST'){
        $pincode=$_POST['pincode'];
