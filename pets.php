@@ -79,7 +79,7 @@
         <div class="row" id="adopt">
           <div class="col-lg-3 col-md-6 col-sm-6 d-flex">
             <div class="card w-100 my-2 shadow-2-strong">
-              <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp" class="card-img-top" style="aspect-ratio: 1 / 1" />
+              <img src="essentials/showpet.php?petid='.$petid.'class="card-img-top" style="aspect-ratio: 1 / 1" />
               <div class="card-body d-flex flex-column">
               <h5 class="card-title">'.$petname.'</h5>
               <p class="card-text">'.$petgender.','.$petage.'</p>
@@ -178,7 +178,7 @@
       $phone=$petrow["PHONE"];
       echo '<div class="col-lg-3 col-md-6 col-sm-6 d-flex">
         <div class="card w-100 my-2 shadow-2-strong">
-          <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp" class="card-img-top" style="aspect-ratio: 1 / 1" />
+          <img src="essentials/showpet.php?petid='.$petid.'" class="card-img-top" style="aspect-ratio: 1 / 1" />
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">'.$petname.'</h5>
             <p class="card-text">'.$petgender.','.$petage.'</p>

@@ -81,12 +81,12 @@
       </div>
       <h3>heyy!! My name is <?php echo $petname?>
       <div class="scroll-container">
-        <img src="https://source.unsplash.com/random/900×700/?lion" alt="Cinque Terre">
-        <img src="https://source.unsplash.com/random/900×700/?dog" alt="Forest">
-        <img src="https://source.unsplash.com/random/900×700/?cat" alt="Northern Lights">
-        <img src="https://source.unsplash.com/random/900×700/?snake" alt="Mountains">
-        <img src="https://source.unsplash.com/random/900×700/?tiger" alt="Mountains">
-        <img src="https://source.unsplash.com/random/900×700/?rabbit" alt="Mountains">
+        <img src="<?php echo 'essentials/petshow1.php?petid='.$petid;?>" alt="Cinque Terre">
+        <img src="<?php echo 'essentials/petshow2.php?petid='.$petid;?>" alt="Forest">
+        <img src="<?php echo 'essentials/petshow3.php?petid='.$petid;?>" alt="Northern Lights">
+        <img src="<?php echo 'essentials/petshow4.php?petid='.$petid;?>" alt="Mountains">
+        <img src="<?php echo 'essentials/petshow5.php?petid='.$petid;?>" alt="Mountains">
+        <img src="<?php echo 'essentials/petshow6.php?petid='.$petid;?>" alt="Mountains">
       </div>
       <hr>
       <h3 style="margin-top:25px;">About Me</h3>
