@@ -59,7 +59,7 @@
                 <img src="essentials/petstorelogo.png" class="img-fluid" id="petlogo" alt="Pet Image 1">
             </div>
             <div class="img-container">
-                <img src="https://source.unsplash.com/random/500×500/?pets" class="img-fluid" alt="Pet Image 2">
+                <img src="essentials/aboutimg.jpg" class="img-fluid" alt="aboutimg">
             </div>
         </div>
     </div>

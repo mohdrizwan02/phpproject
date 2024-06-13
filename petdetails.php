@@ -29,6 +29,56 @@
         min-height:604px;
       }
     </style>
+    <style>
+  .carousel {
+    position: relative;
+    width: 80%;
+    height: 50vh;
+    overflow: hidden;
+    background-color: #ddd;
+}
+
+.carousel-inner {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+    </style>
   </head>
   <body>
     <div class="setheight">
@@ -80,6 +130,30 @@
         </div>
       </div>
       <h3>heyy!! My name is <?php echo $petname?>
+      <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="<?php echo 'essentials/petshow1.php?petid='.$petid;?>" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo 'essentials/petshow2.php?petid='.$petid;?>" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo 'essentials/petshow3.php?petid='.$petid;?>" alt="Image 3">
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo 'essentials/petshow4.php?petid='.$petid;?>" alt="Image 4">
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo 'essentials/petshow5.php?petid='.$petid;?>" alt="Image 5">
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo 'essentials/petshow6.php?petid='.$petid;?>" alt="Image 6">
+            </div>
+        </div>
+        <button class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carousel-control next" onclick="moveSlide(1)">&#10095;</button>
+    </div>div>
       <div class="scroll-container">
         <img src="<?php echo 'essentials/petshow1.php?petid='.$petid;?>" alt="Cinque Terre">
         <img src="<?php echo 'essentials/petshow2.php?petid='.$petid;?>" alt="Forest">
@@ -160,6 +234,26 @@
   </div>
   <!-- Copyright -->
 </footer>
+<script>
+  let currentSlide = 0;
 
+    function moveSlide(direction) {
+        const items = document.querySelectorAll('.carousel-item');
+        const totalSlides = items.length;
+        
+        // Hide current slide
+        items[currentSlide].classList.remove('active');
+        
+        // Calculate next slide index
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        
+        // Show next slide
+        items[currentSlide].classList.add('active');
+    }
+
+// Initialize first slide
+    document.querySelectorAll('.carousel-item')[0].classList.add('active');
+
+</script>
   </body>
 </html>
